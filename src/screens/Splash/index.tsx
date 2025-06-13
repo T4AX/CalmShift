@@ -1,5 +1,3 @@
-"use client"
-
 import type React from "react"
 import { useEffect } from "react"
 import { View, Animated, Dimensions, Image, StatusBar, Text } from "react-native"
@@ -8,9 +6,8 @@ import { useTheme } from "../../context/ThemeContext"
 import type { AppNavigationProp } from "../../types/navigation"
 import { styles } from "./Styles"
 
-const { width, height } = Dimensions.get("window")
 
-const SplashScreen: React.FC = () => {
+const Splash = () => {
   const { colors, fonts } = useTheme()
   const navigation = useNavigation<AppNavigationProp>()
 
@@ -22,7 +19,6 @@ const SplashScreen: React.FC = () => {
   const cardTranslateY = new Animated.Value(30)
 
   useEffect(() => {
-    // Animate card, logo, and text appearance
     Animated.sequence([
       Animated.parallel([
         Animated.timing(cardOpacity, {
@@ -57,7 +53,6 @@ const SplashScreen: React.FC = () => {
       }),
     ]).start()
 
-    // Navigate to main app after animations
     const timer = setTimeout(() => {
       navigation.reset({
         index: 0,
@@ -110,4 +105,4 @@ const SplashScreen: React.FC = () => {
   )
 }
 
-export default SplashScreen
+export default Splash

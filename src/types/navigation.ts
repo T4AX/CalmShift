@@ -6,18 +6,10 @@ export type RootStackParamList = {
   Dashboard: undefined
   Focus: undefined
   Mindfulness: undefined
-  Goals: undefined
   History: undefined
   Settings: undefined
-  MindfulnessExercise: { exerciseId: string }
-  MindfulnessLibrary: undefined
-  TaskDetail: { taskId: string }
-  ProjectDetail: { projectId: string }
-  Reports: undefined
   Tasks: undefined
-  NotificationSettings: undefined
-  NotificationHistory: undefined
-  SessionDetail: { sessionId: string }
+  Projects: undefined
 }
 
 export type AppNavigationProp = NavigationProp<RootStackParamList>
