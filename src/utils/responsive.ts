@@ -1,4 +1,5 @@
 import { Dimensions, PixelRatio, Platform, NativeModules } from "react-native"
+import { useState, useEffect } from "react"
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window")
 
@@ -96,6 +97,24 @@ export const getResponsiveDimensions = () => {
  * Hook to get responsive dimensions and re-render on dimension changes
  */
 export const useResponsiveDimensions = () => {
-  return getResponsiveDimensions()
+  const [dimensions, setDimensions] = useState(() => getResponsiveDimensions())
+
+  useEffect(() => {
+    const subscription = Dimensions.addEventListener('change', ({ window }) => {
+      setDimensions({
+        screenWidth: window.width,
+        screenHeight: window.height,
+        isSmallDevice: window.width < 375,
+        isMediumDevice: window.width >= 375 && window.width < 414,
+        isLargeDevice: window.width >= 414,
+        isTablet: window.width >= 768 && window.height >= 768,
+        isLandscape: window.width > window.height,
+      })
+    })
+
+    return () => subscription?.remove()
+  }, [])
+
+  return dimensions
 }
 
