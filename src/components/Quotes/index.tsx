@@ -81,4 +81,3 @@ const MotivationalQuote: React.FC<MotivationalQuoteProps> = ({ style }) => {
 
 
 export default MotivationalQuote
-
