@@ -407,7 +407,7 @@ const Card: React.FC<CardProps> = ({
 
   if (isInteractive) {
     return (
-      <Animated.View style={animatedCardStyle}>
+      <Animated.View style={animatedCardStyle as any}>
         <Pressable
           onPress={onPress}
           onLongPress={onLongPress}
@@ -436,7 +436,7 @@ const Card: React.FC<CardProps> = ({
   if (animated) {
     return (
       <Animated.View
-        style={animatedCardStyle}
+        style={animatedCardStyle as any}
         accessibilityRole="none"
         accessibilityLabel={accessibilityLabel}
       >
@@ -447,7 +447,7 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <View
-      style={baseCardStyle}
+      style={baseCardStyle as any}
       accessibilityRole="none"
       accessibilityLabel={accessibilityLabel}
     >
