@@ -1,20 +1,20 @@
+import { NavigationContainer, type Theme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer, type Theme } from '@react-navigation/native';
-import { RootStackParamList } from '../types/navigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useTheme } from '../context/ThemeContext';
+
 import Dashboard from '../screens/Dashboard';
 import FocusSession from '../screens/FocusSession';
 import Mindfulness from '../screens/Mindfulness';
 import Tasks from '../screens/Tasks';
 import History from '../screens/History';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { StatusBar } from 'react-native';
 import Splash from '../screens/Splash';
 import Settings from '../screens/Settings';
 import Projects from '../screens/Projects';
+import { TabParamList, RootStackParamList } from '../types/navigation';
 
-const Tab = createBottomTabNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<TabParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
 
 const MainApp = () => {
@@ -28,9 +28,8 @@ const MainApp = () => {
     </Tab.Navigator>
   );
 };
-
 const AppNavigator = () => {
-  const { theme, colors } = useTheme();
+  const { theme, colors } = useTheme()
 
   const MyTheme: Theme = {
     dark: theme === 'dark',
@@ -42,33 +41,22 @@ const AppNavigator = () => {
       border: colors.border,
       notification: colors.danger,
     },
-  };
+  }
 
   return (
     <SafeAreaProvider>
       <NavigationContainer theme={MyTheme}>
-        <StatusBar
-          barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
-          backgroundColor={colors.background}
-          translucent={false}
-        />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Splash" component={Splash} />
           <Stack.Screen name="MainApp" component={MainApp} />
           <Stack.Screen name="Settings" component={Settings} />
           <Stack.Screen name="Projects" component={Projects} />
-          <Stack.Screen
-            name="Focus"
-            component={FocusSession}
-          />
-          <Stack.Screen
-            name="Mindfulness"
-            component={Mindfulness}
-          />
+          <Stack.Screen name="Focus" component={FocusSession} />
+          <Stack.Screen name="Mindfulness" component={Mindfulness} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
-  );
-};
+  )
+}
 
-export default AppNavigator;
+export default AppNavigator

@@ -50,7 +50,7 @@ const HeaderBar: React.FC<HeaderBarProps> = ({
             onPress={onBackPress}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           >
-            <Icon name="chevron-back" size={28} color={colors.text} />
+            <Icon name="chevron-back" size={28} color={colors.text.primary} />
           </TouchableOpacity>
         )}
         <View style={styles.titleContainer}>

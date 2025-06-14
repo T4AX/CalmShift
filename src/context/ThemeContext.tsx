@@ -15,6 +15,7 @@ export type ThemeMode = "system" | "manual"
 // Define theme colors interface
 export interface ThemeColors {
   background: string
+  cardBackground: string
   card: string
   primary: string
   secondary: string
@@ -46,6 +47,7 @@ export interface ThemeFonts {
 export const lightTheme: ThemeColors = {
   background: "#F9FAFB",
   card: "#FFFFFF",
+  cardBackground: "#FDFDFD",
   primary: "#158238",
   secondary: "#116A2F",
   accent: "#A7F3D0",
@@ -67,6 +69,7 @@ export const lightTheme: ThemeColors = {
 // Dark theme definition
 export const darkTheme: ThemeColors = {
   background: "#0B0F0D",
+  cardBackground: "#1A1A1A",
   card: "#1A1F1D",
   primary: "#158238",
   secondary: "#1FC95C",
