@@ -41,6 +41,24 @@ const AppNavigator = () => {
       border: colors.border,
       notification: colors.danger,
     },
+    fonts: {
+      regular: {
+        fontFamily: 'System',
+        fontWeight: 'normal',
+      },
+      medium: {
+        fontFamily: 'System',
+        fontWeight: '500',
+      },
+      bold: {
+        fontFamily: 'System',
+        fontWeight: 'bold',
+      },
+      heavy: {
+        fontFamily: 'System',
+        fontWeight: '900',
+      },
+    },
   }
 
   return (
@@ -51,8 +69,6 @@ const AppNavigator = () => {
           <Stack.Screen name="MainApp" component={MainApp} />
           <Stack.Screen name="Settings" component={Settings} />
           <Stack.Screen name="Projects" component={Projects} />
-          <Stack.Screen name="Focus" component={FocusSession} />
-          <Stack.Screen name="Mindfulness" component={Mindfulness} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

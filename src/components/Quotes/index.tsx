@@ -6,10 +6,11 @@ import { useTheme } from "../../context/ThemeContext"
 import Card from "../Card"
 import { scale, verticalScale } from "../../utils/responsive"
 import { useSelector, useDispatch } from "react-redux"
-import { selectDailyQuote } from "../../redux/selectors"
-import { refreshDailyQuote } from "../../redux/actions"
+import type { RootState } from "../../redux/store"
 import Typography from "../Typography"
 import { styles } from "./Styles"
+import { refreshDailyQuote } from "../../redux/actions"
+import { selectDailyQuote } from "../../redux/selectors"
 
 interface MotivationalQuoteProps {
   style?: any
@@ -18,7 +19,7 @@ interface MotivationalQuoteProps {
 const MotivationalQuote: React.FC<MotivationalQuoteProps> = ({ style }) => {
   const { colors } = useTheme()
   const dispatch = useDispatch()
-  const quote = useSelector(selectDailyQuote)
+  const quote = useSelector((state: RootState) => selectDailyQuote(state))
 
   const [isRefreshing, setIsRefreshing] = useState(false)
   const rotateAnim = new Animated.Value(0)
@@ -50,7 +51,7 @@ const MotivationalQuote: React.FC<MotivationalQuoteProps> = ({ style }) => {
   })
 
   return (
-    <Card style={[styles.card, style]}>
+    <Card style={style}>
       <View style={styles.header}>
         <Typography variant="h4" weight="semibold" style={styles.title}>
           Daily Inspiration

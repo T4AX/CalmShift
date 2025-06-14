@@ -1,7 +1,7 @@
 import type React from "react"
-import { Text, type TextStyle, type TextProps, StyleSheet, Platform } from "react-native"
+import { Text, type TextStyle, type TextProps } from "react-native"
 import { useTheme } from "../../context/ThemeContext"
-import { moderateScale, scale } from "../../utils/responsive"
+import { moderateScale } from "../../utils/responsive"
 import { styles } from "./Styles"
 
 type TypographyVariant = 
@@ -187,7 +187,7 @@ const Typography: React.FC<TypographyProps> = ({
         black: "black",
       }[weight] || "regular"
       const fontKey = italic ? `${baseWeight}Italic` : baseWeight
-      return fonts[fontKey] || fonts.regular
+      return (fonts as any)[fontKey] || fonts.regular
     }
   }
 

@@ -12,6 +12,8 @@ export type RootStackParamList = {
   Splash: undefined;
   MainApp: undefined;
   Settings: undefined;
+  Focus: undefined;
+  Mindfulness: undefined;
   Projects: undefined;
 };
 
